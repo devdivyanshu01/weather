@@ -33,8 +33,9 @@ function App() {
   };
 
   return (
-    <div class="container">
+    <div className="container">
     <div className="app">
+      <div className="upper">
       <h1>🌤️ Weather App</h1>
       <input
         type="text"
@@ -43,18 +44,31 @@ function App() {
         onChange={(e) => setCity(e.target.value)}
       />
       <button onClick={fetchWeather}>Get Weather</button>
+      </div>
 
       {error && <p className="error">{error}</p>}
 
       {weather && (
         <div className="weather-card">
+          <div className="loc">
           <h2>{weather.name}, {weather.sys.country}</h2>
           <p>{weather.weather[0].description}</p>
+          </div>
+          <div className="info">
+          <p>📅 Date: {new Date(weather.dt*1000).toLocaleDateString()}</p>
+          <p>🕑 Time: {new Date(weather.dt*1000).toLocaleTimeString()}</p>
           <p>🌡️ Temp: {weather.main.temp} °C</p>
           <p>💧 Humidity: {weather.main.humidity}%</p>
           <p>🌬️ Wind: {weather.wind.speed} m/s</p>
+          
+          <p> Precipitation: {}</p>
+          </div>
         </div>
       )}
+      <footer className="foooter">
+        <p>Created By Divyanshu.</p>
+        <p>&copy; Weather App</p>
+      </footer>
     </div>
     </div>
   );
