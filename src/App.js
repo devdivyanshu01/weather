@@ -64,7 +64,6 @@ function App() {
   
 
   return (
-    <div className="container">
       <div className="app">
         <div className="upper">
           <h1>🌤️ Weather App</h1>
@@ -83,7 +82,7 @@ function App() {
           <div className="weather-card">
             <div className="loc">
               <h2>{weather.name}, {weather.sys.country}</h2>
-              <p>{weather.weather[0].description}</p>
+              <p className="des">{weather.weather[0].description}</p>
             </div>
             <div className="info">
               <p>📅 Date: {new Date(weather.dt * 1000).toLocaleDateString()}</p>
@@ -111,12 +110,12 @@ function App() {
           </div>
         )}
 
-        <footer className="foooter">
+        <footer>
+          <div className="footer">
           <p>&copy; 2025. Created By Divyanshu.</p>
-          <p>Weather App.</p>
+          <p>Weather App.</p></div>
         </footer>
       </div>
-    </div>
   );
 }
 

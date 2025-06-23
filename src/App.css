@@ -26,6 +26,11 @@ button {
   color: #fff;
 }
 
+.des{
+  font-size: large;
+  font-weight: bold;
+}
+
 .weather-card {
   align-items: center;
   margin-top: 20px;
