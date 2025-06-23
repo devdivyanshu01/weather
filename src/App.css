@@ -1,0 +1,40 @@
+.app {
+  text-align: center;
+  font-family: Arial;
+  margin-top: 50px;
+  height: 100vh;
+  background: linear-gradient(155deg, #69aaff, #fff);
+}
+.container{
+  width: 100%;
+  height: 100%;
+}
+
+input {
+  padding: 10px;
+  width: 200px;
+  margin-right: 10px;
+  border-radius: 1em;
+  background-color: #fff;
+}
+
+button {
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 2em;
+  background-color: #2676e0;
+  color: #fff;
+}
+
+.weather-card {
+  margin-top: 20px;
+  padding: 20px;
+  display: inline-block;
+  background: #f0f8ff;
+  border-radius: 8px;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
