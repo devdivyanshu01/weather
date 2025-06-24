@@ -8,23 +8,10 @@ function App() {
   const [city, setCity] = useState('');
   const [weather, setWeather] = useState(null);
   const [error, setError] = useState('');
-  
   const [airData, setAirData] = useState(null);
 
   const fetchWeather = async () => {
-    if ("geolocation" in navigator) {
-  navigator.geolocation.getCurrentPosition(
-    (position) => {
-      const lat = position.coords.latitude;
-      const lon = position.coords.longitude;
-      fetchWeather(lat, lon);
-    },
-    (error) => {
-      console.error("Geolocation error:", error);
-    }
-  );
-}
-    else if (!city) {
+    if (!city) {
       setError("Please enter a city name.");
       return;
     }
@@ -62,61 +49,61 @@ function App() {
       setAirData(null);
     }
   };
-  
 
   return (
-      <div className="app">
-        <div className="upper">
-          <h1>🌤️ Weather App</h1>
-          <input
-            type="text"
-            placeholder="Enter city"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-          />
-          <button onClick={fetchWeather}>Get Weather</button>
-        </div>
+    <div className="app">
+      <div className="upper">
+        <h1>🌤️ Weather App</h1>
+        <input
+          type="text"
+          placeholder="Enter city"
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
+        />
+        <button onClick={fetchWeather}>Get Weather</button>
+      </div>
 
-        {error && <p className="error">{error}</p>}
+      {error && <p className="error">{error}</p>}
 
-        {weather && (
-          <div className="weather-card">
-            <div className="loc">
-              <h2>{weather.name}, {weather.sys.country}</h2>
-              <p className="des">{weather.weather[0].description}</p>
-            </div>
-            <div className="info">
-              <p>📅 Date: {new Date(weather.dt * 1000).toLocaleDateString()}</p>
-              <p>🕑 Time: {new Date(weather.dt * 1000).toLocaleTimeString()}</p>
-              <p>🌡️ Temp: {weather.main.temp} °C</p>
-              <p>💧 Humidity: {weather.main.humidity}%</p>
-              <p>🌬️ Wind: {weather.wind.speed} m/s</p>
+      {weather && (
+        <div className="weather-card">
+          <div className="loc">
+            <h2>{weather.name}, {weather.sys.country}</h2>
+            <p className="des">{weather.weather[0].description}</p>
+          </div>
+          <div className="info">
+            <p>📅 Date: {new Date(weather.dt * 1000).toLocaleDateString()}</p>
+            <p>🕑 Time: {new Date(weather.dt * 1000).toLocaleTimeString()}</p>
+            <p>🌡️ Temp: {weather.main.temp} °C</p>
+            <p>💧 Humidity: {weather.main.humidity}%</p>
+            <p>🌬️ Wind: {weather.wind.speed} m/s</p>
 
-              <div className="air">
-                <h3>Air Quality</h3>
-                {airData ? (
-                  <div className="qual">
-                    <p><strong>PM2.5:</strong> {airData.list[0].components.pm2_5}</p>
-                    <p><strong>PM10:</strong> {airData.list[0].components.pm10}</p>
-                    <p><strong>CO:</strong> {airData.list[0].components.co}</p>
-                    <p><strong>NO2:</strong> {airData.list[0].components.no2}</p>
-                    <p><strong>O3:</strong> {airData.list[0].components.o3}</p>
-                    <p><strong>AQI:</strong> {airData.list[0].main.aqi}</p>
-                  </div>
-                ) : (
-                  <p>Loading air quality data...</p>
-                )}
-              </div>
+            <div className="air">
+              <h3>Air Quality</h3>
+              {airData ? (
+                <div className="qual">
+                  <p><strong>PM2.5:</strong> {airData.list[0].components.pm2_5}</p>
+                  <p><strong>PM10:</strong> {airData.list[0].components.pm10}</p>
+                  <p><strong>CO:</strong> {airData.list[0].components.co}</p>
+                  <p><strong>NO2:</strong> {airData.list[0].components.no2}</p>
+                  <p><strong>O3:</strong> {airData.list[0].components.o3}</p>
+                  <p><strong>AQI:</strong> {airData.list[0].main.aqi}</p>
+                </div>
+              ) : (
+                <p>Loading air quality data...</p>
+              )}
             </div>
           </div>
-        )}
+        </div>
+      )}
 
-        <footer>
-          <div className="footer">
+      <footer>
+        <div className="footer">
           <p>&copy; 2025. Created By Divyanshu.</p>
-          <p>Weather App.</p></div>
-        </footer>
-      </div>
+          <p>Weather App.</p>
+        </div>
+      </footer>
+    </div>
   );
 }
 
