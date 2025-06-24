@@ -8,6 +8,7 @@ function App() {
   const [city, setCity] = useState('');
   const [weather, setWeather] = useState(null);
   const [error, setError] = useState('');
+  
   const [airData, setAirData] = useState(null);
 
   const fetchWeather = async () => {
